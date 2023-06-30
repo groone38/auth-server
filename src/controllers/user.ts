@@ -1,5 +1,6 @@
 import { getUserById, updateUserById } from "../db/users";
 import { Request, Response } from "express";
+import { deleteUser } from "./../db/users";
 
 interface IUser {
   _id: string;
@@ -55,6 +56,22 @@ export const updateUser = async (
   }
 
   res.status(404).json({
+    message: "User not found!",
+  });
+};
+
+export const onDeleteUser = async (
+  req: IGetUserAuthInfoRequest,
+  res: Response
+) => {
+  const user = await getUserById(req.user._id);
+  if (user) {
+    await deleteUser(req.user._id);
+    return res.status(200).json({
+      message: "User delete!",
+    });
+  }
+  return res.status(404).json({
     message: "User not found!",
   });
 };
