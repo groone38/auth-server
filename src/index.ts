@@ -12,6 +12,8 @@ const app = express();
 
 app.use(
   cors({
+    origin: ["https://auth-server-groone38.vercel.app"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
 );
@@ -25,9 +27,6 @@ const server = http.createServer(app);
 server.listen(8080, () => {
   console.log("Server running on http//localhost:8080/");
 });
-
-const MONGO_URL =
-  "mongodb+srv://admin:admin@cluster0.l0s3o2l.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGODB_URL);
