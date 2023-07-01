@@ -26,11 +26,11 @@ server.listen(8080, () => {
   console.log("Server running on http//localhost:8080/");
 });
 
-const MONGO_URL =
-  "mongodb+srv://admin:admin@cluster0.l0s3o2l.mongodb.net/?retryWrites=true&w=majority";
+// const MONGO_URL =
+//   "mongodb+srv://admin:admin@cluster0.l0s3o2l.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.Promise = Promise;
-mongoose.connect(MONGO_URL);
+mongoose.connect(process.env.MONGODB_URL);
 mongoose.connection.on("error", (error: Error) => console.log(error));
 
 app.use("/auth", authRouter);
