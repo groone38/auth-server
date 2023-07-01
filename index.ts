@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import compression from "compression";
 import cors from "cors";
 import mongoose from "mongoose";
-import { authRouter, userRouter } from "./router/index";
+import { authRouter, userRouter } from "./src/router/index";
 
 require("dotenv").config();
 const app = express();
