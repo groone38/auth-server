@@ -23,7 +23,7 @@ export const register = async (req: Request, res: Response) => {
       const user = await createUser({
         email,
         username,
-        image: req.file.path,
+        // image: req.file.path,
         tel,
         about,
         company,

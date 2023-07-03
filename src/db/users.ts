@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
   tel: { type: Number, require: false },
   company: { type: String, require: false },
   about: { type: String, require: false },
-  image: { type: String, require: false },
+  // image: { type: String, require: false },
   authentication: {
     password: { type: String, required: true, select: false },
     salt: { type: String, select: false },

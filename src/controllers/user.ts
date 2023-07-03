@@ -29,30 +29,17 @@ export const updateUser = async (
   const { email, username, tel, about, company } = req.body;
   const user = await getUserById(req.user._id);
   if (user) {
-    if (req.file) {
-      await updateUserById(req.user._id, {
-        email,
-        username,
-        tel,
-        company,
-        about,
-        image: req.file.path,
-      });
-      return res.status(200).json({
-        message: "Update profile succsess!",
-      });
-    } else {
-      await updateUserById(req.user._id, {
-        email,
-        username,
-        tel,
-        company,
-        about,
-      });
-      return res.status(200).json({
-        message: "Update profile succsess!",
-      });
-    }
+    await updateUserById(req.user._id, {
+      email,
+      username,
+      tel,
+      company,
+      about,
+      // image: req.file.path,
+    });
+    return res.status(200).json({
+      message: "Update profile succsess!",
+    });
   }
 
   res.status(404).json({
